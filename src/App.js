@@ -1,15 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Main from './components/Main';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <button>Кнопка 1</button>
-        <button>Кнопка 2</button>
-        <button>Кнопка 3</button>
-        <button>Кнопка 4</button>
-      </header>
+        <Header />
+        <Main />
     </div>
   );
 }
