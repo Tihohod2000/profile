@@ -9,7 +9,7 @@ class User extends React.Component {
                 {/*<Button text = "Удалить"/>*/}
                 {/*<Button text = "Другое действие"/>*/}
                 <h3>{this.project.name}</h3>
-                <a className="link-project" href={this.project.link}>{this.project.link}</a>
+                <a className="link-project" target="_blank" href={this.project.link}>{this.project.link}</a>
                 {/*<b>{this.user.firesname === "Bob" ? 'Это боб' : 'Это не боб'}</b>*/}
             </div>
 
