@@ -1,25 +1,29 @@
 import React from "react";
 
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedIndex: 1,
-        }
+function Header ({onButtonClick}) {
+
+
+    // const handleBottonClick = (buttnoData) => {
+    //     this.state.selectedIndex = buttnoData;
+    // }
+
+    const hendleClick = (numberOfPages) => {
+        onButtonClick({button: numberOfPages});
     }
 
-    render() {
+
+
         return (
             <header className="App-header">
-                <button>Обо мне</button>
-                <button>Проекты</button>
-                <button>Стэк технологий</button>
-                <button>Кнопка 4</button>
+                <button id={1} onClick={() => hendleClick(1)}>Обо мне</button>
+                <button id={2} onClick={() => hendleClick(2)}>Проекты</button>
+                <button id={3} onClick={() => hendleClick(3)}>Стэк технологий</button>
+                <button id={4} onClick={() => hendleClick(4)}>Кнопка 4</button>
             </header>
         )
-    }
-
 }
+
+
 
 export default Header;

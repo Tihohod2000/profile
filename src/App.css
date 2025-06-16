@@ -40,3 +40,29 @@ button {
     transform: rotate(360deg);
   }
 }
+
+.projects{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project{
+  background-color: #282c34;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 1px 1px 1px black;
+  border-radius: 10px;
+  width: 70%;
+  padding: 5px;
+  margin: 5px;
+  border: black solid 1px;
+}
+
+.link-project{
+  color: white;
+  text-decoration: none;
+  margin: auto;
+}
+
