@@ -26,7 +26,7 @@ class App extends React.Component {
                 <Header onButtonClick={this.handleButtonClick} />
                 {this.state.page === 1 && <Main />}
                 {this.state.page === 2 && <Projects />}
-                {/*{this.state.page === 3 && <Projects />}*/}
+                {this.state.page === 3 && <Projects />}
 
             </div>
         );
