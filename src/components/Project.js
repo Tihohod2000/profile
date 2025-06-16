@@ -1,5 +1,4 @@
 import React from "react";
-// import Button from "./Button";
 
 class User extends React.Component {
     project = this.props.project;
