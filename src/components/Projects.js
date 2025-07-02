@@ -41,7 +41,7 @@ class Projects extends React.Component {
                 {/*<h2>‍👩‍💻 Обо мне:</h2>*/}
                 <div className="main-info">
                     <div>Подробнее с моими проектами вы можете ознакомится на моей странице GitHub.</div>
-                    <a href="https://github.com/Tihohod2000" target="_blank">
+                    <a href="https://github.com/Tihohod2000" target="_blank" rel="noreferrer">
                         https://github.com/Tihohod2000
                     </a>
                 </div>
@@ -69,6 +69,7 @@ class Projects extends React.Component {
         })
             .then(response => {
                 if(response.status === 200) {
+                    this.setState({loaded: true});
                     return response.json();
                 }
                 return;

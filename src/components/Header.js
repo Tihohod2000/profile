@@ -3,11 +3,6 @@ import React from "react";
 
 function Header ({onButtonClick}) {
 
-
-    // const handleBottonClick = (buttnoData) => {
-    //     this.state.selectedIndex = buttnoData;
-    // }
-
     const hendleClick = (numberOfPages) => {
         onButtonClick({button: numberOfPages});
     }
