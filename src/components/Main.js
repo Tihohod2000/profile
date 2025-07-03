@@ -1,4 +1,5 @@
 import {Component} from "react";
+import myGif from "../images/programmer.gif";
 
 class Main extends Component {
     render() {
@@ -9,8 +10,11 @@ class Main extends Component {
                 <div className="main-info">
                     Я начинающий Back-end разработчик.
                     Мой путь в it начался со института ДГТУ, который я окончил в 2024 году.
-                    После окончиния университета я подробатывал в коммерческом проекте используя языки C# и Python.
+                    После окончания университета я подрабатывал в коммерческом проекте используя языки C# и Python.
+                    Сейчас я изучаю следующие языки: JS, TS и С#.
+                    Этот сайт написан на React.
                 </div>
+                <img className={"MainGif"} src={myGif} alt="Gif" />
             </div>
         )
     }

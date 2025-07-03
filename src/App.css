@@ -24,6 +24,16 @@
   color: white;
 }
 
+.App-header .icon {
+  max-height: 5vh;
+  position: absolute;
+  left: 8%;
+}
+
+.MainGif{
+  width: 80%;
+}
+
 button {
   margin: 10px;
 }
@@ -32,20 +42,33 @@ button {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*@keyframes App-logo-spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/
+
+body{
+  min-width: 500px;
 }
 
 .projects{
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 0px;
+  overflow: hidden;
+  animation: expand 10s 0.5s forwards;
 }
+
+@keyframes expand {
+  from { max-height: 0px; }
+  to { max-height: 10000px; }
+}
+
 
 .project{
   background-color: #282c34;
@@ -60,9 +83,13 @@ button {
   border: black solid 1px;
 }
 
+a{
+  word-break: break-word;
+}
+
 .link-project{
   color: white;
-  text-decoration: none;
+  text-decoration-line: none;
   margin: auto;
 }
 

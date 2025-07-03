@@ -9,19 +9,19 @@ class Projects extends React.Component {
             projectsOnline: [],
             projects : [
                 {
-                    id: 2,
+                    id: 1,
                     name: 'Автомат напитков',
                     link: "https://github.com/Tihohod2000/Drinks_vending_machine_1",
                     readMe: "Тут readMe"
                 },
                 {
-                    id: 3,
+                    id: 2,
                     name: 'Конвектор RGBTOBW',
                     link: "https://github.com/Tihohod2000/Convert_RGBToBW",
                     readMe: "Тут readMe"
                 },
                 {
-                    id: 4,
+                    id: 3,
                     name: 'Библиотека коннектор и приложение для работы с биржей Bifinex',
                     link: "https://github.com/Tihohod2000/Bitfinex",
                     readMe: "Тут readMe"
@@ -38,7 +38,6 @@ class Projects extends React.Component {
         return (
             <div className="main">
                 <h1>Тут представлены мои Pet-проекты!</h1>
-                {/*<h2>‍👩‍💻 Обо мне:</h2>*/}
                 <div className="main-info">
                     <div>Подробнее с моими проектами вы можете ознакомится на моей странице GitHub.</div>
                     <a href="https://github.com/Tihohod2000" target="_blank" rel="noreferrer">
@@ -46,7 +45,7 @@ class Projects extends React.Component {
                     </a>
                 </div>
                 <div className="projects">
-                    {this.state.loaded ? <div>Есть данные</div>:<div>Нет данные</div>}
+                    {this.state.loaded ? <div></div>:<div>Загружены оффлайн данные</div>}
                     {this.state.projectsOnline.length > 0 ?
                         this.state.projectsOnline.map((item, index) => (
                             <Project key={index} project={item} />)):
@@ -69,15 +68,13 @@ class Projects extends React.Component {
         })
             .then(response => {
                 if(response.status === 200) {
-                    this.setState({loaded: true});
+                    // this.setState({loaded: true});
                     return response.json();
                 }
                 return;
             })
-            // .then(response => response.json())
             .then(reposData => {
-                // console.log(reposData);
-                // console.log(reposData.length);
+
                 if (reposData.message) {
                     this.setState({ projectsOnline: [] });
                     throw new Error("Ошибка запроса");
@@ -92,9 +89,19 @@ class Projects extends React.Component {
                     })
                         .then(response => response.json())
                         .then(readmeData => {
+                            let readme;
+                            if(readmeData.content){
+                                readme = this.decodeBase64UTF8(readmeData.content)
+                                if(readme.length > 100){
+                                    readme = readme.slice(0, 100) + "...";
+                                }
+                            }else{
+                                readme = 'No README found'
+                            }
+
                             return {
                                 name: repo.name,
-                                readMe: readmeData.content ? this.decodeBase64UTF8(readmeData.content) : 'No README found',
+                                readMe: readme,
                                 link: repo.html_url // Используем html_url вместо owner.link
                             };
                         })
@@ -113,6 +120,7 @@ class Projects extends React.Component {
             })
             .then(projects => {
                 this.setState({ projectsOnline: projects });
+                this.setState({loaded: true});
             })
             .catch(err => {
                 // console.error('Error fetching repositories:', err);
