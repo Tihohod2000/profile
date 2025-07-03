@@ -37,7 +37,8 @@ class Projects extends React.Component {
     render() {
         return (
             <div className="main">
-                <h1>Тут представлены мои Pet-проекты!</h1>
+                <h1>Тут представлены мои</h1>
+                <h1>Pet-проекты!</h1>
                 <div className="main-info">
                     <div>Подробнее с моими проектами вы можете ознакомится на моей странице GitHub.</div>
                     <a href="https://github.com/Tihohod2000" target="_blank" rel="noreferrer">
