@@ -27,11 +27,11 @@
 .App-header .icon {
   max-height: 5vh;
   position: absolute;
-  left: 8%;
+  left: 20px;
 }
 
 .MainGif{
-  width: 80%;
+  max-width: 80%;
 }
 
 button {
