@@ -34,6 +34,10 @@
   max-width: 80%;
 }
 
+.main{
+  padding: 20px;
+}
+
 button {
   margin: 10px;
 }
@@ -52,7 +56,7 @@ button {
 /*}*/
 
 body{
-  min-width: 500px;
+  min-width: 550px;
 }
 
 .projects{
