@@ -1,0 +1,45 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Автомат напитков",
+      "link": "https://github.com/Tihohod2000/Drinks_vending_machine_1",
+      "readMe": "Тут readMe",
+      "language": "TypeScript"
+    },
+    {
+      "id": 1,
+      "name": "Автомат напитков",
+      "link": "https://github.com/Tihohod2000/Drinks_vending_machine_1",
+      "readMe": "Тут readMe",
+      "language": "TypeScript"
+    },
+    {
+      "id": 1,
+      "name": "Автомат напитков",
+      "link": "https://github.com/Tihohod2000/Drinks_vending_machine_1",
+      "readMe": "Тут readMe",
+      "language": "TypeScript"
+    },
+    {
+      "id": 2,
+      "name": "Конвектор RGBTOBW",
+      "link": "https://github.com/Tihohod2000/Convert_RGBToBW",
+      "readMe": "Тут readMe",
+      "language": "C#"
+    },
+    {
+      "id": 3,
+      "name": "Библиотека коннектор и приложение для работы с биржей Bifinex",
+      "link": "https://github.com/Tihohod2000/Bitfinex",
+      "readMe": "Тут readMe",
+      "language": "C#"
+    }
+  ],
+  "technologies": [
+    {
+      "Name": "C#",
+      "Image": "Тут должна быть ссылка на картинку"
+    }
+  ]
+}

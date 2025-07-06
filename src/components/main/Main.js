@@ -1,5 +1,5 @@
 import {Component} from "react";
-import myGif from "../images/programmer.gif";
+import myGif from "../../images/programmer.gif";
 
 class Main extends Component {
     render() {

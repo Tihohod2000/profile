@@ -15,7 +15,8 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  /*min-height: 10vh;*/
+  height: 65px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,9 +26,14 @@
 }
 
 .App-header .icon {
-  max-height: 5vh;
+  height: 40px;
   position: absolute;
   left: 20px;
+}
+
+.technologies-page-content {
+  border-radius: 10px;
+  margin: 20px;
 }
 
 .MainGif{
@@ -67,6 +73,8 @@ body{
   overflow: hidden;
   animation: expand 10s 0.5s forwards;
 }
+
+
 
 @keyframes expand {
   from { max-height: 0px; }

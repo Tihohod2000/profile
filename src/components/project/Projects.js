@@ -7,24 +7,27 @@ class Projects extends React.Component {
         this.state = {
             loaded: false,
             projectsOnline: [],
-            projects : [
+            projects: [
                 {
                     id: 1,
                     name: 'Автомат напитков',
                     link: "https://github.com/Tihohod2000/Drinks_vending_machine_1",
-                    readMe: "Тут readMe"
+                    readMe: "Тут readMe",
+                    language: "TypeScript"
                 },
                 {
                     id: 2,
                     name: 'Конвектор RGBTOBW',
                     link: "https://github.com/Tihohod2000/Convert_RGBToBW",
-                    readMe: "Тут readMe"
+                    readMe: "Тут readMe",
+                    language: "C#"
                 },
                 {
                     id: 3,
                     name: 'Библиотека коннектор и приложение для работы с биржей Bifinex',
                     link: "https://github.com/Tihohod2000/Bitfinex",
-                    readMe: "Тут readMe"
+                    readMe: "Тут readMe",
+                    language: "C#"
                 },
             ]
         }
@@ -32,9 +35,14 @@ class Projects extends React.Component {
 
     componentDidMount() {
         this.getProjectsFromGitHub();
+
+
     }
 
     render() {
+        // console.log("---------------------");
+        // console.log(this.props.data);
+        // console.log("---------------------");
         return (
             <div className="main">
                 <h1>Тут представлены мои</h1>
@@ -46,29 +54,28 @@ class Projects extends React.Component {
                     </a>
                 </div>
                 <div className="projects">
-                    {this.state.loaded ? <div></div>:<div>Загружены оффлайн данные</div>}
+                    {this.state.loaded ? <div></div> : <div>Загружены оффлайн данные</div>}
                     {this.state.projectsOnline.length > 0 ?
                         this.state.projectsOnline.map((item, index) => (
-                            <Project key={index} project={item} />)):
-                        this.state.projects.map((item, index) => (
-                            <Project key={index} project={item} />
-                    ))}
+                            <Project key={index} project={item}/>)) :
+                        this.props.data.projects.map((item, index) => (
+                            <Project key={index} project={item}/>
+                        ))}
                 </div>
             </div>
         )
     }
 
 
-
     getProjectsFromGitHub() {
-        if(this.state.loaded) {
+        if (this.state.loaded) {
             return;
         }
         fetch('https://api.github.com/users/Tihohod2000/repos', {
             method: 'GET',
         })
             .then(response => {
-                if(response.status === 200) {
+                if (response.status === 200) {
                     // this.setState({loaded: true});
                     return response.json();
                 }
@@ -77,7 +84,7 @@ class Projects extends React.Component {
             .then(reposData => {
 
                 if (reposData.message) {
-                    this.setState({ projectsOnline: [] });
+                    this.setState({projectsOnline: []});
                     throw new Error("Ошибка запроса");
                 }
                 // Создаем массив промисов для всех запросов readme
@@ -87,23 +94,27 @@ class Projects extends React.Component {
                         headers: {
                             'Accept': 'application/vnd.github.v3+json'
                         }
+
+
                     })
                         .then(response => response.json())
                         .then(readmeData => {
                             let readme;
-                            if(readmeData.content){
+                            let language = repo.language;
+                            if (readmeData.content) {
                                 readme = this.decodeBase64UTF8(readmeData.content)
-                                if(readme.length > 100){
+                                if (readme.length > 100) {
                                     readme = readme.slice(0, 100) + "...";
                                 }
-                            }else{
+                            } else {
                                 readme = 'No README found'
                             }
 
                             return {
                                 name: repo.name,
                                 readMe: readme,
-                                link: repo.html_url // Используем html_url вместо owner.link
+                                link: repo.html_url,
+                                language: language,
                             };
                         })
                         .catch(err => {
@@ -120,12 +131,12 @@ class Projects extends React.Component {
                 return Promise.all(readmePromises);
             })
             .then(projects => {
-                this.setState({ projectsOnline: projects });
+                this.setState({projectsOnline: projects});
                 this.setState({loaded: true});
             })
             .catch(err => {
                 // console.error('Error fetching repositories:', err);
-                this.setState({ projectsOnline: [] });
+                this.setState({projectsOnline: []});
             });
     }
 
@@ -142,9 +153,6 @@ class Projects extends React.Component {
         return new TextDecoder('utf-8').decode(bytes);
     }
 }
-
-
-
 
 
 export default Projects;
