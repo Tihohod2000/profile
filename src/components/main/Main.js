@@ -1,8 +1,8 @@
 import {Component} from "react";
 import myGif from "../../images/programmer.gif";
 
-class Main extends Component {
-    render() {
+function Main() {
+
         return (
             <div className="main">
                 <h1>Привет👋 Меня зовут Тихон!</h1>
@@ -17,7 +17,7 @@ class Main extends Component {
                 <img className={"MainGif"} src={myGif} alt="Gif" />
             </div>
         )
-    }
+
 }
 
 export default Main;
