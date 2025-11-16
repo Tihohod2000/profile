@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Project from "./Project";
 
-function Projects({projectsOnline, setProjectsOnline}) {
-    const [loaded, setLoaded] = useState(false);
-    // const [projectsOnline, setProjectsOnline] = useState([]);
+function Projects({projectsOnline, setProjectsOnline, repositoriesIsLoaded, setRepositoriesIsLoaded}) {
+
     const [projects] = useState([
         {
             id: 1,
@@ -28,14 +27,16 @@ function Projects({projectsOnline, setProjectsOnline}) {
         },
     ]);
 
+    // выполняется один раз при монтировании
     useEffect(() => {
         getProjectsFromGitHub().then(r => {
             return r
-        });
-    }, []); // выполняется один раз при монтировании
+        })
+    });
+
 
     async function getProjectsFromGitHub() {
-        if (loaded) return;
+        if (repositoriesIsLoaded) return;
 
         try {
             const response = await fetch('https://api.github.com/users/Tihohod2000/repos');
@@ -84,7 +85,7 @@ function Projects({projectsOnline, setProjectsOnline}) {
 
             const projects = await Promise.all(readmePromises);
             setProjectsOnline(projects);
-            setLoaded(true);
+            setRepositoriesIsLoaded(true);
 
         } catch (err) {
             setProjectsOnline([]);
@@ -117,7 +118,8 @@ function Projects({projectsOnline, setProjectsOnline}) {
             </div>
 
             <div className="projects" key={"projects"}>
-                {loaded ? <div className={"info"}>Загружены данные c GitHub</div> : <div className={"info"}>Загружены оффлайн данные</div>}
+                {repositoriesIsLoaded ? <div className={"info"}>Загружены данные c GitHub</div> :
+                    <div className={"info"}>Загружены оффлайн данные</div>}
 
                 {(projectsOnline.length > 0 ? projectsOnline : projects).map((item, index) => (
                     <Project key={index} project={item}/>

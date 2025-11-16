@@ -6,7 +6,7 @@ function Header ({setPage}) {
 
         return (
             <header className="App-header">
-                <img className={"icon"} src={icon} onClick={() => setPage(1)}/>
+                <img className={"icon"} src={icon} onClick={() => setPage(1)} alt={"icon"}/>
                 <button id={1} onClick={() => setPage(1)}>Обо мне</button>
                 <button id={2} onClick={() => setPage(2)}>Проекты</button>
                 {/*<button id={3} onClick={() => setPage(3)}>Технологий</button>*/}

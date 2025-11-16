@@ -42,6 +42,7 @@
 
 .main{
   padding: 20px;
+  margin-bottom: 30px;
 }
 
 button {
@@ -103,5 +104,18 @@ a{
   color: white;
   text-decoration-line: none;
   margin: auto;
+}
+
+Footer{
+  position: fixed;
+  padding: 10px;
+  color: white;
+  background-color: #282c34;
+  width: 100%;
+  bottom: 0;
+}
+
+.mail:hover{
+  cursor: copy;
 }
 
